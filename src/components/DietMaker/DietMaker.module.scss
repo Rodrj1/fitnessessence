@@ -1,0 +1,123 @@
+table {
+  width: 50%;
+  border: 1px solid black;
+  margin: 0px auto 40px auto;
+  border-collapse: collapse;
+  th {
+    background-color: #7f00ff;
+    color: white;
+  }
+
+  td {
+    border: 1px solid black;
+  }
+
+  td:nth-child(6) {
+    font-weight: bold;
+    color: #fff;
+    background-color: #7f00ff;
+  }
+
+  button {
+    margin: 10px 0px;
+  }
+}
+
+.container {
+  padding: 15px;
+  width: 100%;
+  margin: auto;
+  border-left: 3px solid #7f00ff;
+  border-right: 3px solid #a770ef;
+  text-align: center;
+  height: auto;
+  color: #615f5f;
+  background: linear-gradient(to right, #dae2f8, #d6a4a4);
+  h2 {
+    color: #7f00ff;
+    border-radius: 20px;
+    width: 90%;
+    height: 50px;
+    margin: auto;
+    font-size: 1.1rem;
+  }
+
+  .placeholderFoodContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    margin: 20px auto;
+    gap: 15px;
+    .foodContainer {
+      h2 {
+        color: rgba(73, 70, 70, 0.966);
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        height: auto;
+      }
+      span {
+        color: #7f00ff;
+        font-weight: bold;
+      }
+      p {
+        width: 150px;
+        text-align: center;
+      }
+
+      button {
+        margin-top: 10px;
+      }
+      input {
+        color: #000;
+        outline: none;
+        border: none;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 100px;
+        height: 50px;
+        width: 50px;
+        background-color: white;
+      }
+    }
+  }
+}
+
+@media (min-width: 280px) and (max-width: 480px) {
+  table {
+    width: 100%;
+    font-size: 0.7rem;
+    tr:first-child {
+      th:first-child {
+        width: 100%;
+      }
+    }
+
+    td {
+      height: auto;
+      width: 10px;
+    }
+  }
+
+  .placeholderFoodContainer {
+    .foodContainer {
+      width: 90%;
+      border-bottom: 2px solid grey;
+      p {
+        width: 100%;
+        margin: auto;
+      }
+      button {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@media (min-width: 648px) and (max-width: 1280px) and (orientation: landscape) {
+  table {
+    width: 80%;
+  }
+}
