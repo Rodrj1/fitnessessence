@@ -2,6 +2,7 @@ import { foodData } from "../../data/foodData";
 import { useDietMaker } from "../../features/DietMaker/useDietMaker";
 import Food from "./Food/Food";
 import DietCSS from "./DietMaker.module.scss";
+import { useEffect, useState } from "react";
 
 const DietMaker = () => {
   const {
@@ -13,6 +14,23 @@ const DietMaker = () => {
     handleInputCalories,
     handleRemoveFood,
   } = useDietMaker();
+
+  const [filteredFood, setFilteredFood] = useState<Food[]>([]);
+
+  useEffect(() => {
+    const filteredArr = foodData.reduce((acc: Food["type"][], current) => {
+      const x = acc.find((item) => item === current.type);
+      if (!x) {
+        return acc.concat([current.type]);
+      } else {
+        return acc;
+      }
+    }, []);
+  }, []);
+
+  const handleFoodFilter = (type: string) => {
+    setFilteredFood(foodData.filter((food) => food.type == type));
+  };
 
   return (
     <section className={DietCSS.container}>
@@ -81,20 +99,42 @@ const DietMaker = () => {
         {isDietMakerOpen && (
           <>
             <h2>FOOD AVAILABLE</h2>
+
+            <button className={DietCSS.dropdown}>FILTER BY:
+              <article className={DietCSS.dropdownContent}>
+                {foodData
+                  .reduce((acc: Food["type"][], current) => {
+                    const x = acc.find((item) => item === current.type);
+                    if (!x) {
+                      return acc.concat([current.type]);
+                    } else {
+                      return acc;
+                    }
+                  }, [])
+                  .map((category) => (
+                    <div
+                      key={category}
+                      onClick={() => handleFoodFilter(category)}
+                    >
+                      {category}
+                    </div>
+                  ))}
+              </article>
+            </button>
+
             <h3>All values are based on a portion of 100grs.</h3>
-            <>
-              <div className={DietCSS.placeholderFoodContainer}>
-                {foodData.map((food) => (
-                  <Food
-                    key={food.name}
-                    food={food}
-                    CSS={DietCSS}
-                    handleCalories={handleInputCalories}
-                    addToDiet={addToDiet}
-                  />
-                ))}
-              </div>
-            </>
+
+            <div className={DietCSS.placeholderFoodContainer}>
+              {filteredFood.map((food) => (
+                <Food
+                  key={food.name}
+                  food={food}
+                  CSS={DietCSS}
+                  handleCalories={handleInputCalories}
+                  addToDiet={addToDiet}
+                />
+              ))}
+            </div>
           </>
         )}
       </article>

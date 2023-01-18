@@ -4,6 +4,7 @@ interface Food {
   protein: number;
   carbs: number;
   fats: number;
+  type: string;
 }
 
 interface FoodInDiet extends Food {
