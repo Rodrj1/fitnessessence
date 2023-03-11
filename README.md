@@ -1,6 +1,6 @@
 # Fitnessessence
 
-Link to website: https://fitnessessence.netlify.app/
+Website: https://fitnessessence.netlify.app/
 
 Website with a bit of fitness information that serves as placeholder for it. It comes with a Diet Maker at the end.
 
